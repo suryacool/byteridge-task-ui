@@ -1,0 +1,42 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">First Name</th>
+            <th scope="col">Last Name</th>
+            <th scope="col">User Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">User Created Date</th>
+            <th scope="col">Client Ip</th>
+            <th scope="col">Login At</th>
+            <th scope="col">Loggedout At</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users; index as i">
+            <th scope="row">{{this.skip+i+1}}</th>
+            <td>{{user.firstName | titlecase}}</td>
+            <td>{{user.lastName | titlecase}}</td>
+            <td>{{user.username | titlecase}}</td>
+            <td>{{user.role }}</td>
+            <td>{{user.createdDate | date}}</td>
+            <td>{{user.history_info.clientip}}</td>
+            <td>{{user.history_info.createdAt | date}}</td>
+            <td>{{user.history_info.updatedAt | date}}</td>
+
+        </tr>
+
+    </tbody>
+</table>
+
+<!-- paginator -->
+<nav *ngIf="users.length > 1">
+    <ul class="pagination justify-content-center">
+        <li id="prev" class="page-item">
+            <span class="page-link" (click)="prev()">Previous</span>
+        </li>
+        <li id="next" class="page-item">
+            <span class="page-link" (click)="next()" disabled="true">Next</span>
+        </li>
+    </ul>
+</nav>
